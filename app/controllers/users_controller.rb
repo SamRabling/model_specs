@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   @user = User.new(params.require(:user).permit(:first_name, :last_name, :email))
   if @user.save
     flash[:notice] = ['User successfully created']
-    redirect_to new_user_path
+    redirect_to "/users/#{@user.id}"
   else
     if not params[:first_name]
       flash[:notice1]="First name can't be blank"
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end
 
 
