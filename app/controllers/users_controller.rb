@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if not params[:email]
       flash[:notice3]="Email can't be blank"
     end
+    redirect_to new_user_path
   end
 end
 
